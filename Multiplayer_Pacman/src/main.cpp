@@ -1,20 +1,30 @@
-#include <SFML/Window.hpp>
+#include "Game.h"
+#include <SFML/Graphics.hpp>
 
 int main()
 {
-    sf::Window window(sf::VideoMode(800, 600), "My window");
+    sf::RenderWindow window(sf::VideoMode(1280, 720), "LD51-Extra");
+    Game game;
 
-    // run the program as long as the window is open
+    sf::Clock clock;
+    float deltaTime = 0.0f;
+
     while (window.isOpen())
     {
-        // check all the window's events that were triggered since the last iteration of the loop
+        deltaTime = clock.restart().asSeconds();
+
         sf::Event event;
         while (window.pollEvent(event))
         {
-            // "close requested" event: we close the window
             if (event.type == sf::Event::Closed)
                 window.close();
         }
+
+        game.Update(window, deltaTime);
+
+        window.clear();
+        game.Draw(window);
+        window.display();
     }
 
     return 0;
