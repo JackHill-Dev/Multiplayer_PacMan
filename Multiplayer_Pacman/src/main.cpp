@@ -3,7 +3,7 @@
 
 int main()
 {
-    sf::RenderWindow window(sf::VideoMode(1280, 720), "LD51-Extra");
+    sf::RenderWindow window(sf::VideoMode(1280, 720), "Multiplayer Pac-Man");
     Game game;
 
     sf::Clock clock;

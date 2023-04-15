@@ -15,7 +15,7 @@ public:
 	};
 
 	/// <summary>
-	//	Use std bind and reference to instace that contains the function you are binding
+	//	Use std bind and reference to instance that contains the function you are binding
 	/// </summary>
 	/// <param name="callback"></param>
 	Button(std::string& filePath, const std::function<void(void)>& callback);

@@ -9,7 +9,7 @@
 class Player
 {
 public:
-	Player();
+	Player(std::string filePath, int posX, int posY, int size, int framesPerAim);
 	~Player();
 	void InitAnims();
 	sf::Sprite& GetSprite() { return m_Sprite; }
@@ -21,7 +21,6 @@ public:
 	void Decelerate(float& dt);
 	enum AnimState
 	{
-		Idle,
 		WalkRight,
 		WalkLeft,
 		WalkUp,
@@ -29,11 +28,15 @@ public:
 		Count
 	};
 private:
+	// Player controller
 	float speed = 1400;
 	float deceleration = 1000;
 	float m_MaxVelocity = 140;
 	sf::Vector2f m_Velocity;
 	sf::Vector2f m_Direction;
+	// Sprite and animations
+	int m_spirteSize = 0;
+	int m_FramesPerAnim = 0;
 	std::unique_ptr<sf::Texture> m_Texture;
 	sf::Sprite m_Sprite;
 	Animation m_WalkingAnim;

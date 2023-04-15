@@ -1,17 +1,23 @@
 #include "Player.h"
 
-Player::Player()
+
+
+Player::Player(std::string filePath, int posX, int posY, int size, int framesPerAim)
 {
-	sf::IntRect rect({ 0, 128 }, { 64,64 });
+	m_spirteSize = size;
+	m_FramesPerAnim = framesPerAim;
+	sf::IntRect rect({ posX, posY }, { size,size });
 	m_Texture = std::make_unique<sf::Texture>();
-	m_Texture->loadFromFile("Assets/Player.png");
+	m_Texture->loadFromFile(filePath);
 	m_Sprite.setTexture(*m_Texture);
 	m_Sprite.setTextureRect(rect);
 	m_Sprite.setOrigin(m_Sprite.getLocalBounds().width / 2, m_Sprite.getLocalBounds().height / 2);
 	m_Sprite.setPosition(640, 320);
+	m_Sprite.setScale(2, 2); // scaling up from a 16bit spritesheet
 
 	InitAnims();
 }
+
 
 Player::~Player()
 {
@@ -20,31 +26,18 @@ Player::~Player()
 
 void Player::InitAnims()
 {
-
 	m_Anims.reserve(AnimState::Count);
-	// Aniamtion(starting frame x, y, size, no. frames, frame time)
-	// Idle
-	m_Anims.push_back(Animation(0, 640, 64, 64, 1, 0.1f));
-	// Walk Right
-	m_Anims.push_back(Animation(0, 704, 64, 64, 9, 0.1f));
-	// Walk Left
-	m_Anims.push_back(Animation(0, 576, 64, 64, 9, 0.1f));
-	// Walk Up
-	m_Anims.push_back(Animation(0, 512, 64, 64, 9, 0.1f));
-	// Walk Down
-	m_Anims.push_back(Animation(0, 640, 64, 64, 9, 0.1f));
-	// SpellCast Right
-	m_Anims.push_back(Animation(0, 64 * 3, 64, 64, 7, 0.2f));
+
+	for(int i = 0; i < AnimState::Count; i++)
+		m_Anims.push_back(Animation(0, i * m_spirteSize, m_spirteSize, m_spirteSize, m_FramesPerAnim, 0.2f));
+
 }
 
 
 void Player::Update(float& dt)
 {
 	UpdateMovement(dt);
-	if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
-	{
-		Shoot();
-	}
+	
 	UpdateAnimations(dt);
 	Decelerate(dt);
 	m_Sprite.move(m_Velocity * dt);
@@ -94,9 +87,6 @@ void Player::UpdateAnimations(float& dt)
 {
 	m_Anims[m_CurrentAnimState].Update(dt);
 	m_Sprite.setTextureRect(m_Anims[m_CurrentAnimState].uv_Rect);
-
-	if (m_Velocity.x <= 0 || m_Velocity.y <= 0)
-		m_CurrentAnimState = Idle;
 }
 
 void Player::Decelerate(float& dt)
