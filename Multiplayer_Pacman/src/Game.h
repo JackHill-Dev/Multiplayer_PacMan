@@ -14,8 +14,11 @@ public:
 	void Draw(sf::RenderWindow& RenderWindow);
 private:
 	void HandleCollisions();
+	void CreateGame();
 private:
 	Player m_PacManPlayer;
 	std::vector<Player*> m_GhostPlayers;
 	sf::Vector2f mousePos;
+
+	Button m_CreateBtn;
 };

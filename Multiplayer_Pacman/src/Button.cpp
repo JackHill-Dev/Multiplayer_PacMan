@@ -15,9 +15,33 @@ Button::~Button()
 
 }
 
+
+void Button::Update(float dt, sf::RenderWindow& window)
+{
+	sf::FloatRect bounds = m_Spr.getGlobalBounds();
+	sf::Vector2i mousePos = sf::Mouse::getPosition(window);
+	sf::FloatRect mouseRect(mousePos.x, mousePos.y, 1, 1);
+
+	if (bounds.intersects(mouseRect))
+	{
+		if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
+		{
+			m_ButtonState = Pressed;
+			OnPressed();
+		}
+		else
+			m_ButtonState = Hovered;
+	}
+	else
+		m_ButtonState = Default;
+}
+void Button::Draw(sf::RenderWindow& window)
+{
+	window.draw(m_Spr);
+}
 void Button::OnPressed()
 {
-	m_ButtonState = Pressed;
 	m_Callback();
-
 }
+
+

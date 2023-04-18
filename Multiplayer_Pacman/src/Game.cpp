@@ -1,6 +1,7 @@
 #include "Game.h"
 #include <functional>
 #include <string>
+#include <iostream>
 Game::Game()
 	: m_PacManPlayer("Assets/Pac-Man.png", 0,0, 16, 3)
 {
@@ -10,6 +11,7 @@ Game::Game()
 
 	}
 
+	m_CreateBtn = Button(std::string("Assets/createBtn.png"), std::bind(&Game::CreateGame, this));
 }
 
 Game::~Game()
@@ -25,7 +27,7 @@ Game::~Game()
 void Game::Update(sf::RenderWindow& window, float& dt)
 {
 	m_PacManPlayer.Update(dt);
-
+	m_CreateBtn.Update(dt, window);
 	HandleCollisions();
 }
 
@@ -35,12 +37,17 @@ void Game::Draw(sf::RenderWindow& RenderWindow)
 		g->Draw(RenderWindow);
 
 	m_PacManPlayer.Draw(RenderWindow);
-	
+	m_CreateBtn.Draw(RenderWindow);
 }
 
 void Game::HandleCollisions()
 {
 
+}
+
+void Game::CreateGame()
+{
+	std::cout << "Creating game...\n";
 }
 
 
