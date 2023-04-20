@@ -1,31 +1,12 @@
-#include "Game.h"
+#include "Core/Game.h"
 #include <SFML/Graphics.hpp>
-
+#include <memory>
 int main()
 {
-    sf::RenderWindow window(sf::VideoMode(1280, 720), "Multiplayer Pac-Man");
-    Game game;
+    std::shared_ptr<Game> game;
+    game = std::make_shared<Game>();
 
-    sf::Clock clock;
-    float deltaTime = 0.0f;
-
-    while (window.isOpen())
-    {
-        deltaTime = clock.restart().asSeconds();
-
-        sf::Event event;
-        while (window.pollEvent(event))
-        {
-            if (event.type == sf::Event::Closed)
-                window.close();
-        }
-
-        game.Update(window, deltaTime);
-
-        window.clear();
-        game.Draw(window);
-        window.display();
-    }
+    game->Run();
 
     return 0;
 }
