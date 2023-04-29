@@ -16,8 +16,15 @@
     <ClCompile Include="src\Core\Player.cpp">
       <Filter>source files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Scenes\MainMenuScene.cpp" />
-    <ClCompile Include="src\Scenes\GameScene.cpp" />
+    <ClCompile Include="src\Scenes\GameScene.cpp">
+      <Filter>source files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Scenes\MainMenuScene.cpp">
+      <Filter>source files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Core\InputBox.cpp">
+      <Filter>source files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Core\Player.h">
@@ -32,9 +39,18 @@
     <ClInclude Include="src\Core\Game.h">
       <Filter>header files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Scenes\Scene.h" />
-    <ClInclude Include="src\Scenes\MainMenuScene.h" />
-    <ClInclude Include="src\Scenes\GameScene.h" />
+    <ClInclude Include="src\Scenes\GameScene.h">
+      <Filter>header files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Scenes\MainMenuScene.h">
+      <Filter>header files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Scenes\Scene.h">
+      <Filter>header files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Core\InputBox.h">
+      <Filter>header files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="source files">

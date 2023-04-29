@@ -11,6 +11,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Core\InputBox.cpp" />
     <ClCompile Include="src\Scenes\GameScene.cpp" />
     <ClCompile Include="src\Scenes\MainMenuScene.cpp" />
     <ClCompile Include="src\Core\Animation.cpp" />
@@ -20,6 +21,7 @@
     <ClCompile Include="src\Core\Player.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Core\InputBox.h" />
     <ClInclude Include="src\Scenes\GameScene.h" />
     <ClInclude Include="src\Scenes\MainMenuScene.h" />
     <ClInclude Include="src\Core\Animation.h" />
