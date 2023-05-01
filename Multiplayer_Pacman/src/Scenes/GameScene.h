@@ -11,6 +11,7 @@ public:
     virtual void Init() override;
     virtual void Update(float dt, sf::RenderWindow& window) override;
     virtual void Draw(sf::RenderWindow& window) override;
+	virtual void HandleEvents(const sf::Event& event) override {}
 	virtual ~GameScene();
 private:
 

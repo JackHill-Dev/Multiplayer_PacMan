@@ -1,22 +1,23 @@
 #pragma once
 #include <SFML/Graphics/Texture.hpp>
-#include <SFML/Graphics/Sprite.hpp>
-#include <SFML/Graphics/Text.hpp>
-#include <SFML/Graphics/Font.hpp>
-#include <SFML/Graphics/RectangleShape.hpp>
-#include <SFML/Window/Event.hpp>
-
-class InputBox
+#include <SFML/Graphics.hpp>
+#include <string>
+class InputBox : public sf::Transformable, public sf::Drawable
 {
 public:
-	InputBox(sf::Font& font, unsigned int fontSize);
+	InputBox(const sf::Vector2f& size, const sf::Vector2f& position, unsigned int fontSize);
 	~InputBox();
 
-	void Update(float dt);
-	void Draw(sf::RenderTarget& target);
+	void HandleEvent(const sf::Event& event);
+	virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
+
+	void SetFont(const sf::Font& font) { m_Text.setFont(font); }
 private:
+	sf::RectangleShape m_Background;
 	sf::Text m_Text;
-	sf::RectangleShape m_Box;
-	bool m_selected;
+	sf::Font m_Font;
+	mutable sf::RectangleShape m_Cursor;
+	bool m_hasFocus;
+	std::string m_currentText;
 };
 

@@ -20,7 +20,6 @@ void Game::Run()
 	sf::Clock clock;
 	float deltaTime = 0.0f;
 
-	
 
 	for (auto& scene : m_Scenes)
 		scene->Init();
@@ -36,8 +35,10 @@ void Game::Run()
 		{
 			if (event.type == sf::Event::Closed)
 				window.close();
-		}
 
+			m_Scenes[currentScene]->HandleEvents(event);
+		}
+		
 		m_Scenes[currentScene]->Update(deltaTime, window);
 		window.clear();
 		m_Scenes[currentScene]->Draw(window);
