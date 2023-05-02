@@ -16,9 +16,11 @@ public:
     virtual void HandleEvents(const sf::Event& event) override;
 private:
     void CreateGame();
+    const std::string& GetInput();
 private:
     // TODO: Add menu title, background, etc.
     Button m_BtnCreateLobby;
+    Button m_BtnGetInput;
     InputBox m_InputBox;
     sf::Font font;
     //Button m_BtnJoinLobby;

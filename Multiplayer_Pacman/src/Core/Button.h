@@ -19,7 +19,7 @@ public:
 	//	m_CreateBtn = Button(std::string("Assets/createBtn.png"), std::bind(&Game::CreateGame, this));
 	/// </summary>
 	/// <param name="callback"></param>
-	Button(std::string& filePath, const std::function<void(void)>& callback);
+	Button(std::string& filePath, const sf::Vector2f& pos, const std::function<void(void)>& callback);
 	Button() { m_Texture = new sf::Texture; };
 	~Button();
 	sf::Sprite& GetSprite() { return m_Spr; }

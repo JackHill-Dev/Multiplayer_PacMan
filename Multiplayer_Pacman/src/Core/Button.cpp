@@ -1,11 +1,11 @@
 #include "Button.h"
 
-Button::Button(std::string& filePath, const std::function<void(void)>& callback) : m_Callback(callback)
+Button::Button(std::string& filePath, const sf::Vector2f& pos, const std::function<void(void)>& callback) : m_Callback(callback)
 {
 	m_Texture = new sf::Texture;
 	m_Texture->loadFromFile(filePath);
 	m_Spr.setTexture(*m_Texture);
-	m_Spr.setPosition(200, 320);
+	m_Spr.setPosition(pos);
 }
 
 Button::~Button()

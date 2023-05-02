@@ -12,6 +12,7 @@ public:
 	virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 
 	void SetFont(const sf::Font& font) { m_Text.setFont(font); }
+	const std::string& GetCurrentText() const { return m_currentText; }
 private:
 	sf::RectangleShape m_Background;
 	sf::Text m_Text;
