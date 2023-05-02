@@ -44,28 +44,26 @@ void InputBox::HandleEvent(const sf::Event& event)
 		{
 			if (event.text.unicode < 128 && event.text.unicode != '\r' && event.text.unicode != '\b')
 			{
-				m_Text.setString(m_Text.getString() + static_cast<char>(event.text.unicode));
-				printf("Letter added: %c", static_cast<char>(event.text.unicode));
+				m_currentText += static_cast<char>(event.text.unicode);
 			}
 		}
 		break;
 	case sf::Event::KeyPressed:
+	
 		if (m_hasFocus)
 		{
-			if (event.key.code == sf::Keyboard::BackSpace)
+			if (event.key.code == sf::Keyboard::BackSpace && !m_currentText.empty())
 			{
-				std::string string = m_Text.getString();
-				if (!string.empty())
-				{
-					string.pop_back();
-					m_Text.setString(string);
-				}
+				m_currentText.pop_back();
+				m_Text.setString(m_currentText);
 			}
 		}
 		break;
+	
 	default: break;
 	}
 
+	m_Text.setString(m_currentText);
 }
 
 void InputBox::draw(sf::RenderTarget& target, sf::RenderStates states) const

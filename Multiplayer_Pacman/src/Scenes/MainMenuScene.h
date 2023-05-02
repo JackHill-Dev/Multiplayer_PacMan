@@ -8,7 +8,7 @@ class MainMenuScene :
 {
 public:
 
-    MainMenuScene(Game* game) : Scene(game) , m_InputBox(sf::Vector2f(128,64), sf::Vector2f(100.f, 100.f), 32) {};
+    MainMenuScene(Game* game) : Scene(game) , m_InputBox(sf::Vector2f(128,32),  sf::Vector2f(100.f, 100.f), 32) {};
     ~MainMenuScene() {};
     virtual void Init() override;
     virtual void Update(float dt, sf::RenderWindow& window) override;
