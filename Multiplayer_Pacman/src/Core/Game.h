@@ -26,6 +26,8 @@ private:
 private:
 	std::vector<Scene*> m_Scenes;
 	int currentScene = 0;
+	bool isHost = false;
+	bool isClient = false;
 	// Keep references to the scenes so they keep their previous states rather than creating a new one each time
 	// Scenes
 	// Mainmenu

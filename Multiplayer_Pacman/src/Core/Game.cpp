@@ -38,8 +38,24 @@ void Game::Run()
 
 			m_Scenes[currentScene]->HandleEvents(event);
 		}
-		
+
+		// Network handling
+		if (isHost)
+		{
+			// Start listening for clients
+			// Set the host player as ID #1
+			// Start a send/recieve thread for each connected client
+		}
+		if (isClient)
+		{
+			// Connect to host
+			// Set the ID to currentNoPlayers++
+			// Start a send/recieve thread
+		}
+
+		// Game logic
 		m_Scenes[currentScene]->Update(deltaTime, window);
+		// Game render
 		window.clear();
 		m_Scenes[currentScene]->Draw(window);
 		window.display();
