@@ -51,6 +51,8 @@
     <ClInclude Include="src\Core\InputBox.h">
       <Filter>header files</Filter>
     </ClInclude>
+    <ClInclude Include="src\Core\Network.h" />
+    <ClInclude Include="src\Core\Packet.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="source files">

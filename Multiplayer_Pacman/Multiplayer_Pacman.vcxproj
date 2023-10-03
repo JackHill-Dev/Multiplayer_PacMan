@@ -22,6 +22,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Core\InputBox.h" />
+    <ClInclude Include="src\Core\Network.h" />
+    <ClInclude Include="src\Core\Packet.h" />
     <ClInclude Include="src\Scenes\GameScene.h" />
     <ClInclude Include="src\Scenes\MainMenuScene.h" />
     <ClInclude Include="src\Core\Animation.h" />
@@ -73,6 +75,9 @@
     <IntDir>..\bin-int\Release-windows-x86_64\Multiplayer_Pacman\</IntDir>
     <TargetName>Multiplayer_Pacman</TargetName>
     <TargetExt>.exe</TargetExt>
+  </PropertyGroup>
+  <PropertyGroup Label="Vcpkg">
+    <VcpkgEnableManifest>false</VcpkgEnableManifest>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
